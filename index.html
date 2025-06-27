@@ -1,148 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and broken symmetry in the Standard Model of physics." />
+  <meta name="keywords" content="theology, physics, cosmology, Jailbreaking Christ, broken symmetry, Scarlet Point" />
   <title>Scarlet Point | Jailbreaking Christ</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* Custom styles to complement Tailwind */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a; /* A slightly softer black */
+    }
+    .header-gradient {
+      background: linear-gradient(to bottom, #6b0000, #4a0000);
+    }
+    .footer-gradient {
+       background: linear-gradient(to top, #6b0000, #4a0000);
+    }
+    .nav-bg {
+      background-color: rgba(128, 0, 0, 0.3); /* Semi-transparent red */
+      backdrop-filter: blur(5px);
+    }
+    details > summary {
+      list-style: none; /* Remove default marker */
+    }
+    details > summary::-webkit-details-marker {
+      display: none; /* Hide marker for Safari */
+    }
+    details > summary::before {
+      content: '+'; /* Custom marker */
+      margin-right: 0.75rem;
+      font-weight: bold;
+      transition: transform 0.2s ease-in-out;
+    }
+    details[open] > summary::before {
+      transform: rotate(45deg);
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <header class="bg-red-900 p-6 text-center">
-    <h1 class="text-4xl font-bold text-red-300">Scarlet Point</h1>
-    <p class="text-lg text-gray-300">Broken Symmetries. Cosmic Christ. A Forgotten Revelation.</p>
+<body class="bg-black text-gray-200 font-sans">
+  <!-- Header Section -->
+  <header class="header-gradient p-6 text-center shadow-lg">
+    <h1 class="text-5xl font-extrabold text-red-300 tracking-wider">Scarlet Point</h1>
+    <p class="text-lg text-gray-300 mt-2">Broken Symmetries. Cosmic Christ. A Forgotten Revelation.</p>
   </header>
 
-  <nav class="bg-red-800 text-center py-3">
-    <a href="#about" class="text-gray-200 mx-3 hover:text-white">About</a>
-    <a href="#jbc" class="text-gray-200 mx-3 hover:text-white">Jailbreaking Christ</a>
-    <a href="#trilogy" class="text-gray-200 mx-3 hover:text-white">The Daughter's Blood</a>
-    <a href="#blog" class="text-gray-200 mx-3 hover:text-white">Blog</a>
-    <a href="#contact" class="text-gray-200 mx-3 hover:text-white">Contact</a>
+  <!-- Navigation Bar -->
+  <nav class="nav-bg sticky top-0 z-50 text-center py-3">
+    <a href="#about" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">About</a>
+    <a href="#jbc" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Jailbreaking Christ</a>
+    <a href="#trilogy" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">The Trilogy</a>
+    <a href="#reviews" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Reviews</a>
+    <a href="#contact" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Contact</a>
   </nav>
 
-  <main class="p-6 max-w-5xl mx-auto">
-    <section class="mb-16 grid md:grid-cols-2 gap-8 items-center">
-  <div>
-    <p class="text-yellow-400 font-semibold text-lg mb-2">Ready to Learn</p>
-    <h2 class="text-4xl font-extrabold text-white leading-tight mb-4">What is the Universe?<br>Who is Jesus?</h2>
-    <h3 class="text-3xl font-bold text-red-300 mb-2">Christ!... Why am I just now finding out?</h3>
-    <p class="italic text-lg text-gray-300">An 8th grader's journey through doubt & discovery!</p>
-  </div>
-  <div class="flex flex-col items-center bg-black">
-    <p class="text-lg text-white mb-2">A Beautiful Way To See Reality!</p>
-    <img src="./images/beautiful-way-reality-red.png" alt="Jailbreaking Christ Display Image" class="w-full max-w-md shadow-xl" />
-  </div>
-</section>
-
-    <section id="about" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">About Scarlet Point</h2>
-      <p class="text-gray-300">Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and broken symmetry in the Standard Model of physics. It weaves theology, cosmology, and narrative into a single unveiling.</p>
+  <!-- Main Content -->
+  <main class="p-4 md:p-8 max-w-5xl mx-auto">
+    <!-- Hero Section -->
+    <section class="mb-20 grid md:grid-cols-2 gap-8 items-center">
+      <div class="text-center md:text-left">
+        <p class="text-yellow-400 font-semibold text-lg mb-2">Ready to Learn?</p>
+        <h2 class="text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">What is the Universe?<br>Who is Jesus?</h2>
+        <h3 class="text-3xl font-bold text-red-400 mb-3">Christ!... Why am I just now finding out?</h3>
+        <p class="italic text-lg text-gray-400">An 8th grader's journey through doubt &amp; discovery!</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="p-2 bg-gradient-to-br from-red-800 to-red-900 rounded-lg shadow-2xl">
+           <img 
+            src="https://placehold.co/600x400/000000/e53e3e?text=A+Beautiful+Way+To+See+Reality" 
+            alt="A conceptual image representing the Jailbreaking Christ thesis" 
+            class="w-full max-w-md rounded-md"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/e53e3e?text=Image+Not+Found';"
+           />
+        </div>
+      </div>
     </section>
 
-    <section id="jbc" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">Jailbreaking Christ</h2>
-      <p class="text-gray-300 mb-4">A radical theological hypothesis: that the Lamb slain from the foundation of the world is not metaphor but mechanism. That Christ's broken body is the structure of spacetime itself. Read excerpts, explore the implications, or download the thesis.</p>
-      <a href="#jbc-thesis" class="inline-block mt-2 px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700">Read the Thesis</a>
+    <!-- About Section -->
+    <section id="about" class="mb-16 scroll-mt-20">
+      <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">About Scarlet Point</h2>
+      <p class="text-gray-300 text-lg">Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and broken symmetry in the Standard Model of physics. It weaves theology, cosmology, and narrative into a single unveiling.</p>
     </section>
 
-    <section id="jbc-thesis" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">The Jailbreaking Christ Thesis</h2>
-      <p class="text-gray-300 mb-4">
-        The central claim of the Jailbreaking Christ thesis is that the universe itself is the broken body of the Son — not allegorically or symbolically, but ontologically and structurally. This breaks the illusion that science and theology operate in separate domains. The same broken symmetry that gives rise to mass, force, and field in physics is the very act of sacrifice spoken of in Scripture.
-      </p>
-      <p class="text-gray-300 mb-4">
-        Christ is not merely a historical figure who suffered at the hands of men, but a cosmic Lamb who was broken "from the foundation of the world" — not in time, but as time. The crucifixion is the unveiling of a truth that already upholds all reality.
-      </p>
-      <p class="text-gray-300 mb-4">
-        Jailbreaking Christ is not about undermining the faith, but freeing it from centuries of theological enclosure. It is an invitation to behold the Lamb in the language of physics, and to see creation as altar.
-      </p>
+    <!-- Jailbreaking Christ Introduction -->
+    <section id="jbc" class="mb-16 scroll-mt-20">
+      <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">Jailbreaking Christ</h2>
+      <p class="text-gray-300 mb-4 text-lg">A radical theological hypothesis: that the Lamb slain from the foundation of the world is not metaphor but mechanism. That Christ's broken body is the structure of spacetime itself. Read excerpts, explore the implications, or download the thesis.</p>
+      <a href="#jbc-thesis" class="inline-block mt-2 px-8 py-3 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-800 transition-all duration-300 shadow-lg hover:shadow-xl">Read the Thesis</a>
     </section>
 
-    <section id="jbc-insights" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">Jailbreaking Christ – Core Insights</h2>
+    <!-- Thesis Details -->
+    <section id="jbc-thesis" class="mb-16 bg-gray-900/50 p-6 rounded-lg shadow-inner scroll-mt-20">
+        <h2 class="text-3xl font-bold text-red-400 mb-4">The Thesis</h2>
+        <div class="prose prose-invert max-w-none text-gray-300 space-y-4">
+          <p>The central claim of the Jailbreaking Christ thesis is that the universe itself is the broken body of the Son — not allegorically or symbolically, but ontologically and structurally. This breaks the illusion that science and theology operate in separate domains. The same broken symmetry that gives rise to mass, force, and field in physics is the very act of sacrifice spoken of in Scripture.</p>
+          <p>Christ is not merely a historical figure who suffered at the hands of men, but a cosmic Lamb who was broken "from the foundation of the world" — not in time, but as time. The crucifixion is the unveiling of a truth that already upholds all reality.</p>
+          <p>Jailbreaking Christ is not about undermining the faith, but freeing it from centuries of theological enclosure. It is an invitation to behold the Lamb in the language of physics, and to see creation as an altar.</p>
+        </div>
+    </section>
+    
+    <!-- Core Insights (Accordion) -->
+    <section id="jbc-insights" class="mb-16 scroll-mt-20">
+      <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">Core Insights</h2>
       <div class="space-y-4">
-        <details class="bg-gray-800 rounded p-4">
-          <summary class="cursor-pointer text-red-400 font-semibold">1. The Trinity Re-examined</summary>
-          <p class=\"mt-2 text-gray-300\">Scarlet Point challenges the Nicene formula by asserting that the Father-Son relationship is not metaphorical or symbolic, but ontologically real. This begetting is the actual origin point of creation itself, not an abstraction. The Nicene emphasis on co-equality obscures the Father's generative role and the Son's obedience through suffering.<br><blockquote class='border-l-4 border-red-600 pl-4 mt-2 italic text-sm text-red-200'>““This concept of the Trinity as it emerged from the battle of the three-month-long Nicean conference—I suggest—became the quintessential contraceptive that denies both God’s genuine fatherhood and Christ’s true sonship.””</blockquote>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">1. The Trinity Re-examined</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>Scarlet Point challenges the Nicene formula by asserting that the Father-Son relationship is not metaphorical or symbolic, but ontologically real. This begetting is the actual origin point of creation itself, not an abstraction. The Nicene emphasis on co-equality obscures the Father's generative role and the Son's obedience through suffering.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“This concept of the Trinity as it emerged from the battle of the three-month-long Nicean conference—I suggest—became the quintessential contraceptive that denies both God’s genuine fatherhood and Christ’s true sonship.”</blockquote>
+          </div>
         </details>
-        <details class="bg-gray-800 rounded p-4">
-          <summary class="cursor-pointer text-red-400 font-semibold">2. The Cosmos as the Body of Christ</summary>
-          <p class=\"mt-2 text-gray-300\">Scarlet Point presents the universe as the literal, broken body of Christ — not symbol, but structure. What physicists describe as broken symmetry is the very substance of the Son slain before time began. Creation is cruciform at its core.<br><span class='italic text-sm text-red-200'>“A reality (Son) born in an instant from some birthing reality (Father), immediately broken, and through its broken body granting not only life to every particle in the Cosmos…”</span>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">2. The Cosmos as the Body of Christ</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>Scarlet Point presents the universe as the literal, broken body of Christ — not symbol, but structure. What physicists describe as broken symmetry is the very substance of the Son slain before time began. Creation is cruciform at its core.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“A reality (Son) born in an instant from some birthing reality (Father), immediately broken, and through its broken body granting not only life to every particle in the Cosmos…”</blockquote>
+          </div>
         </details>
-        <details class="bg-gray-800 rounded p-4">
-          <summary class="cursor-pointer text-red-400 font-semibold">3. Sacrifice as Physical Law</summary>
-          <p class=\"mt-2 text-gray-300\">Scarlet Point teaches that the fundamental interactions of matter, mass, and force are not accidental — they are the physics of divine love. The crucifixion is not merely an historical moment; it is a phase transition that defines being itself.<br><span class='italic text-sm text-red-200'>“Every instant of space-time, matter, and energy exists moment by moment because some transcendent body was broken, and from that broken body emanates the structure and flow of all life.”</span>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">3. Sacrifice as Physical Law</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>Scarlet Point teaches that the fundamental interactions of matter, mass, and force are not accidental — they are the physics of divine love. The crucifixion is not merely an historical moment; it is a phase transition that defines being itself.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“Every instant of space-time, matter, and energy exists moment by moment because some transcendent body was broken, and from that broken body emanates the structure and flow of all life.”</blockquote>
+          </div>
         </details>
-        <details class="bg-gray-800 rounded p-4">
-          <summary class="cursor-pointer text-red-400 font-semibold">4. Theology and Physics as One Revelation</summary>
-          <p class=\"mt-2 text-gray-300\">Scarlet Point proposes a jailbreak from the false dichotomy between faith and science. Scripture and quantum field theory are not opposites — they are differently angled reflections of the same ontological rupture and redemption.<br><span class='italic text-sm text-red-200'>“The Universe is the broken body of Christ, and the orthodoxies of biblicism and scientism have jailed this reality.”</span>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">4. Theology and Physics as One Revelation</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>Scarlet Point proposes a jailbreak from the false dichotomy between faith and science. Scripture and quantum field theory are not opposites — they are differently angled reflections of the same ontological rupture and redemption.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“The Universe is the broken body of Christ, and the orthodoxies of biblicism and scientism have jailed this reality.”</blockquote>
+          </div>
         </details>
-        <details class="bg-gray-800 rounded p-4">
-          <summary class="cursor-pointer text-red-400 font-semibold">5. A Call to Rebuild the Frame</summary>
-          <p class=\"mt-2 text-gray-300\">Scarlet Point invites theologians and physicists alike to step outside inherited models and embrace the crucified Christ as the fabric, not just the savior, of reality. It is both a theological reckoning and a scientific reformation.<br><span class='italic text-sm text-red-200'>“That very instance when Jesus uttered the words ‘This is my body which is broken for you’ were true in the most profound sense imaginable... that bread he held... was, in the deepest sense possible, actually his broken body.”</span>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">5. A Call to Rebuild the Frame</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>Scarlet Point invites theologians and physicists alike to step outside inherited models and embrace the crucified Christ as the fabric, not just the savior, of reality. It is both a theological reckoning and a scientific reformation.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“That very instance when Jesus uttered the words ‘This is my body which is broken for you’ were true in the most profound sense imaginable... that bread he held... was, in the deepest sense possible, actually his broken body.”</blockquote>
+          </div>
         </details>
       </div>
     </section>
 
-    <section id="trilogy" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">The Daughter's Blood Trilogy</h2>
-      <ul class="text-gray-300 space-y-2">
-        <li><strong>Book I – Complete:</strong> A theological thriller where Christie enters a cosmic revelation beyond church and creed.</li>
-        <li><strong>Book II – In Progress:</strong> The journey to Longo Mai. Mal'chi’s identity begins to unfold.</li>
-        <li><strong>Book III – Starting:</strong> The final confrontation at the altar. The Lamb revealed.</li>
-      </ul>
+    <!-- Trilogy Section -->
+    <section id="trilogy" class="mb-16 scroll-mt-20">
+        <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">The Daughter's Blood Trilogy</h2>
+        <ul class="text-gray-300 space-y-3 text-lg">
+            <li class="pl-4 border-l-4 border-red-700"><strong>Book I – Complete:</strong> A theological thriller where Christie enters a cosmic revelation beyond church and creed.</li>
+            <li class="pl-4 border-l-4 border-red-700"><strong>Book II – In Progress:</strong> The journey to Longo Mai. Mal'chi’s identity begins to unfold.</li>
+            <li class="pl-4 border-l-4 border-red-700"><strong>Book III – Starting:</strong> The final confrontation at the altar. The Lamb revealed.</li>
+        </ul>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section id="reviews" class="mb-16 scroll-mt-20">
+      <h2 class="text-3xl font-bold text-red-400 mb-6 border-b-2 border-red-800 pb-2">What Readers Are Saying</h2>
+      <div class="space-y-8 text-gray-300">
+        <blockquote class="border-l-4 border-red-600 pl-6 italic bg-gray-900/40 p-4 rounded-r-lg">
+          <p>"Absolutely love this book!"</p>
+          <footer class="text-sm text-red-300 mt-2 not-italic">— Christine Wise (April 7, 2024)</footer>
+        </blockquote>
+        <blockquote class="border-l-4 border-red-600 pl-6 italic bg-gray-900/40 p-4 rounded-r-lg">
+          <p>"The book is a little ahead of its time for many circles but the framework through which it is written is the antidote to the pathologies of the modern western culture..."</p>
+          <footer class="text-sm text-red-300 mt-2 not-italic">— Jeremy Horning (February 2, 2024)</footer>
+        </blockquote>
+         <blockquote class="border-l-4 border-red-600 pl-6 italic bg-gray-900/40 p-4 rounded-r-lg">
+          <p>"It’s not every day you come across a book that bridges the gap between the gospel and science... This book is incredible, and I’m genuinely grateful he took the time to write it. It’s one of those reads that sticks with you.”</p>
+          <footer class="text-sm text-red-300 mt-2 not-italic">— Craig Hostetler (May 18, 2024)</footer>
+        </blockquote>
+        <blockquote class="border-l-4 border-red-600 pl-6 italic bg-gray-900/40 p-4 rounded-r-lg">
+          <p>"I don't know if I have words to explain the awe that built within me as I read this book... Get it and read it. You won't be able to put it down!”</p>
+          <footer class="text-sm text-red-300 mt-2 not-italic">— Kath (December 3, 2023)</footer>
+        </blockquote>
+      </div>
+       <div class="text-center mt-8">
+            <a href="https://a.co/d/bDlz6SV" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 px-8 py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl">
+              View on Amazon &rarr;
+            </a>
+       </div>
     </section>
 
-    <section id="reviews" class="mb-16">
-  <h2 class="text-2xl font-bold text-red-300 mb-4">What Readers Are Saying</h2>
-  <div class="space-y-6 text-gray-300">
-    <blockquote class="border-l-4 border-red-600 pl-4 italic">
-      “Absolutely love this book!”
-      <span class="block text-sm text-red-200 mt-1">— Christine Wise (April 7, 2025)</span>
-    </blockquote>
-    <blockquote class="border-l-4 border-red-600 pl-4 italic">
-      “The book is a little ahead of its time for many circles but the framework through which it is written is the antidote to the pathologies of the modern western culture.
-      The framework is grounded in the reality that existed before the Bible was ever written and the reality that will exist long after theologians have thoroughly confused themselves with 'the right interpretation of scripture.'”
-      <span class="block text-sm text-red-200 mt-1">— Jeremy Horning (February 2, 2025)</span>
-    </blockquote>
-    <blockquote class="border-l-4 border-red-600 pl-4 italic">
-      “It’s not every day you come across a book that bridges the gap between the gospel and science and actually shows how they support each other. Most people pick one side or the other. Eugene doesn’t. He brings both together with clarity and conviction. This book is incredible, and I’m genuinely grateful he took the time to write it. It’s one of those reads that sticks with you.”
-      <span class="block text-sm text-red-200 mt-1">— Craig Hostetler (May 18, 2025)</span>
-    </blockquote>
-    <blockquote class="border-l-4 border-red-600 pl-4 italic">
-      “I don't know if I have words to explain the awe that built within me as I read this book... So many question marks in my framework of reality were replaced by exciting possibilities. Things of God and spiritual reality that I encountered during the darkest time of my life were affirmed. I love how Eugene wrestled with and proposed answers to so many profound questions without being dogmatic or coming across as having arrived. Rather sparking the desire to continue this deep dive into the endless mystery of Christ. Get it and read it. You won't be able to put it down!”
-      <span class="block text-sm text-red-200 mt-1">— Kath (December 3, 2024)</span>
-    </blockquote>
-    <blockquote class="border-l-4 border-red-600 pl-4 italic">
-      “Eugene L. Ulrich's 'Jailbreaking Christ' challenges conventional interpretations, offering a refreshing take on Christ beyond the confines of traditional chapter and verse. The cover is what drew me in, what a cool design! As for the words under the cover, they had scholarly rigor, profound insights, and a liberated perspective of Christ. This book is a thought-provoking journey that encourages a deeper understanding of the spiritual essence, transcending the limitations of scriptural confinement. A must-read for those seeking a transformative and expansive view of Christ's teachings.”
-      <span class="block text-sm text-red-200 mt-1">— DCAL Gear Customer Support (January 31, 2024)</span>
-    </blockquote>
-    <a href="https://a.co/d/bDlz6SV" target="_blank" class="inline-block mt-4 px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700">
-      View on Amazon
-    </a>
-  </div>
-</section>
-
-    <section id="blog" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">Blog / Reflections</h2>
-      <p class="text-gray-300 mb-4">Coming soon: dispatches from the edge of theology, symmetry, and story. Subscribe to stay updated.</p>
-      <a href="#" class="inline-block mt-2 px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700">Get Email Updates</a>
-    </section>
-
-    <section id="contact" class="mb-16">
-      <h2 class="text-2xl font-bold text-red-300 mb-4">Contact</h2>
-      <p class="text-gray-300 mb-2">Want to collaborate, host a conversation, or just share thoughts? Reach out:</p>
+    <!-- Contact Form Section -->
+    <section id="contact" class="mb-16 bg-gray-900/50 p-6 rounded-lg shadow-inner scroll-mt-20">
+      <h2 class="text-3xl font-bold text-red-400 mb-4">Contact</h2>
+      <p class="text-gray-300 mb-4">Want to collaborate, host a conversation, or just share thoughts? Reach out:</p>
       <form action="https://formspree.io/f/xjkrjwlo" method="POST" class="space-y-4 max-w-xl">
-        <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white" />
-        <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white" />
-        <textarea name="message" placeholder="Your Message" required class="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white"></textarea>
-        <button type="submit" class="bg-red-700 hover:bg-red-800 px-6 py-2 rounded text-white">Send</button>
+        <div>
+          <label for="name" class="sr-only">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-800 border-2 border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all" />
+        </div>
+        <div>
+          <label for="email" class="sr-only">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-800 border-2 border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all" />
+        </div>
+        <div>
+          <label for="message" class="sr-only">Your Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="w-full p-3 rounded bg-gray-800 border-2 border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all"></textarea>
+        </div>
+        <button type="submit" class="bg-red-700 hover:bg-red-600 px-8 py-3 rounded-lg text-white font-semibold transition-colors duration-300 shadow-lg">Send Message</button>
       </form>
     </section>
   </main>
 
-  <footer class="bg-red-900 text-center p-4 text-gray-400">
-    &copy; 2025 Scarlet Point. All rights reserved.
+  <!-- Footer -->
+  <footer class="footer-gradient text-center p-6 text-gray-400 mt-12">
+    &copy; 2024 Scarlet Point. All rights reserved.
   </footer>
 </body>
 </html>
