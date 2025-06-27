@@ -7,17 +7,18 @@
   <meta name="keywords" content="theology, physics, cosmology, Jailbreaking Christ, broken symmetry, Scarlet Point" />
   <title>Scarlet Point | Jailbreaking Christ</title>
   
-  <!-- Tailwind CSS Script - No longer in the <head> to prevent blocking -->
+  <!-- Tailwind CSS script in the head to prevent Flash of Unstyled Content -->
+  <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Preconnect to Google Fonts servers -->
+  <!-- Preconnect to Google Fonts servers for faster loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
-  <!-- Asynchronously load Google Fonts CSS -->
+  <!-- Asynchronously load Google Fonts CSS to prevent blocking -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'">
   
-  <!-- Fallback for no-JS browsers -->
+  <!-- Fallback for browsers that have JavaScript disabled -->
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
   </noscript>
@@ -277,7 +278,5 @@
     &copy; 2024 Scarlet Point. All rights reserved.
   </footer>
   
-  <!-- Moved Tailwind CSS to the end of the body to improve performance -->
-  <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
