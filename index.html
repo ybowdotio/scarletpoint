@@ -6,10 +6,22 @@
   <meta name="description" content="Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and broken symmetry in the Standard Model of physics." />
   <meta name="keywords" content="theology, physics, cosmology, Jailbreaking Christ, broken symmetry, Scarlet Point" />
   <title>Scarlet Point | Jailbreaking Christ</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind CSS Script - No longer in the <head> to prevent blocking -->
+  
+  <!-- Preconnect to Google Fonts servers -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Asynchronously load Google Fonts CSS -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+  
+  <!-- Fallback for no-JS browsers -->
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
+  </noscript>
+
   <style>
     /* Custom styles to complement Tailwind */
     body {
@@ -264,5 +276,8 @@
   <footer class="footer-gradient text-center p-6 text-gray-400 mt-12">
     &copy; 2024 Scarlet Point. All rights reserved.
   </footer>
+  
+  <!-- Moved Tailwind CSS to the end of the body to improve performance -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
