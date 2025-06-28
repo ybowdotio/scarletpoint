@@ -433,17 +433,17 @@ It weaves theology and cosmology into a single, coherent narrative—stretching 
     }
   </script>
 
-<!-- Tailwind-based Scarlet Point Floating Chat Widget -->
-<div x-data="chatbot" class="fixed bottom-4 right-4 z-50">
+<!-- Tailwind-based Scarlet Point Floating Chat Widget (Updated Fonts & Size) -->
+<div x-data="chatbot" x-init="$nextTick(() => open = true)" class="fixed bottom-4 right-4 z-50 font-[Inter] text-base transition-all duration-300 ease-in-out">
   <!-- Floating Button -->
-  <button @click="open = !open" class="bg-[#8B0000] text-white font-serif px-4 py-2 rounded-full shadow-lg hover:opacity-90">
+  <button @click="open = !open" class="bg-[#8B0000] text-white px-4 py-2 rounded-full shadow-lg hover:opacity-90">
     Ask Scarletpoint
   </button>
 
   <!-- Chat Box -->
-  <div x-show="open" x-transition class="mt-4 w-80 max-w-full h-[500px] flex flex-col bg-zinc-900 border border-red-800 rounded-xl shadow-2xl overflow-hidden">
+  <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="mt-4 w-80 h-[500px] flex flex-col bg-zinc-900 border border-red-800 rounded-xl shadow-2xl overflow-hidden">
     <!-- Messages -->
-    <div class="flex-1 p-4 overflow-y-auto space-y-2 text-sm text-zinc-100 font-serif" x-ref="messages">
+    <div class="flex-1 p-4 overflow-y-auto space-y-3 text-zinc-100 text-base" x-ref="messages">
       <div><em class="text-red-400">Scarletpoint:</em> I’m an AI trained on the full writings and vision of Scarlet Point. Ask me anything, and I’ll do my best to respond from what I know.</div>
       <template x-for="msg in messages" :key="msg.id">
         <div><strong x-text="msg.role === 'user' ? 'You:' : 'Scarletpoint:'"></strong> <span x-text="msg.text"></span></div>
@@ -453,7 +453,7 @@ It weaves theology and cosmology into a single, coherent narrative—stretching 
     <!-- Input -->
     <div class="border-t border-zinc-700 bg-zinc-800 flex">
       <input x-model="input" @keydown.enter="send()" type="text" placeholder="Ask anything..."
-        class="flex-1 bg-transparent px-4 py-2 text-white placeholder-zinc-400 focus:outline-none font-serif">
+        class="flex-1 bg-transparent px-4 py-2 text-white placeholder-zinc-400 focus:outline-none">
       <button :disabled="!input.trim()" @click="send()" class="bg-[#8B0000] text-white px-4 disabled:opacity-40">Send</button>
     </div>
   </div>
@@ -463,7 +463,7 @@ It weaves theology and cosmology into a single, coherent narrative—stretching 
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('chatbot', () => ({
-      open: false,
+      open: true,
       messages: [],
       input: '',
       async send() {
