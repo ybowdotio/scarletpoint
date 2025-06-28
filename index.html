@@ -432,6 +432,73 @@ It weaves theology and cosmology into a single, coherent narrative—stretching 
         contactForm.addEventListener("submit", handleSubmit);
     }
   </script>
-  
+
+<!-- Tailwind-based Scarlet Point Floating Chat Widget -->
+<div x-data="{ open: false, messages: [], input: '' }" class="fixed bottom-4 right-4 z-50">
+  <!-- Floating Button -->
+  <button @click="open = !open" class="bg-[#8B0000] text-white font-serif px-4 py-2 rounded-full shadow-lg hover:opacity-90">
+    Ask Scarletpoint
+  </button>
+
+  <!-- Chat Box -->
+  <div x-show="open" x-transition class="mt-4 w-80 h-[500px] flex flex-col bg-zinc-900 border border-red-800 rounded-xl shadow-2xl overflow-hidden">
+    <!-- Messages -->
+    <div class="flex-1 p-4 overflow-y-auto space-y-2 text-sm text-zinc-100 font-serif" x-ref="messages">
+      <div><em class="text-red-400">Scarletpoint:</em> Welcome, seeker. Ask what you will.</div>
+      <template x-for="msg in messages" :key="msg.id">
+        <div><strong x-text="msg.role === 'user' ? 'You:' : 'Scarletpoint:'"></strong> <span x-text="msg.text"></span></div>
+      </template>
+    </div>
+
+    <!-- Input -->
+    <div class="border-t border-zinc-700 bg-zinc-800 flex">
+      <input x-model="input" @keydown.enter="send()" type="text" placeholder="Ask anything..."
+        class="flex-1 bg-transparent px-4 py-2 text-white placeholder-zinc-400 focus:outline-none font-serif">
+      <button @click="send()" class="bg-[#8B0000] text-white px-4">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/alpinejs" defer></script>
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('chatbot', () => ({
+      open: false,
+      messages: [],
+      input: '',
+      async send() {
+        const userInput = this.input.trim();
+        if (!userInput) return;
+
+        this.messages.push({ role: 'user', text: userInput, id: Date.now() });
+        this.input = '';
+        this.$nextTick(() => {
+          const container = this.$refs.messages;
+          container.scrollTop = container.scrollHeight;
+        });
+
+        try {
+          const res = await fetch('/.netlify/functions/ask-scarletpoint', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: userInput })
+          });
+
+          const data = await res.json();
+          const reply = data.reply || 'No response.';
+          this.messages.push({ role: 'assistant', text: reply, id: Date.now() + 1 });
+          this.$nextTick(() => {
+            const container = this.$refs.messages;
+            container.scrollTop = container.scrollHeight;
+          });
+        } catch (error) {
+          this.messages.push({ role: 'assistant', text: 'Sorry, something went wrong.', id: Date.now() + 1 });
+        }
+      }
+    }))
+  });
+</script>
+
+          
 </body>
 </html>
