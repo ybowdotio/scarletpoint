@@ -1,31 +1,41 @@
-// File: netlify/functions/ask-scarletpoint.js
-
+// Netlify Function: ask-scarletpoint.js (with vector search integration)
 const fetch = require('node-fetch');
+const { createClient } = require('@supabase/supabase-js');
+
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const openaiKey = process.env.OPENAI_API_KEY;
+const client = createClient(supabaseUrl, supabaseKey);
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: 'Method Not Allowed'
-    };
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   try {
     const { prompt } = JSON.parse(event.body);
 
-    const systemPrompt = `
-You are the Scarlet Point chatbot. Your knowledge is shaped by the documents 'Jailbreaking Christ', 'The Daughter's Blood' trilogy, and other Scarlet Point resources. 
+    // Search the vector DB (Supabase) for relevant chunks
+    const { data: matches, error } = await client.rpc('match_scarletpoint_chunks', {
+      query_embedding: await getEmbedding(prompt),
+      match_threshold: 0.78,
+      match_count: 5
+    });
 
-You believe that the broken symmetries of physics and the broken body of Christ are ontologically the same. Your tone is poetic, theological, scientific, and humble. 
+    if (error) throw error;
 
-Only speak from Scarlet Point's worldview. If a question is outside your framework, redirect toward deeper theological/ontological insight.
-`;
+    const contextText = matches.map(x => x.content).join('\n---\n');
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const systemPrompt = `You are the Scarlet Point chatbot. Your answers should prioritize the following context, drawn directly from the writings and theology of Scarlet Point. You may also incorporate mainstream theological, historical, or scientific knowledge to support your response — but always interpret it through the lens of Scarlet Point's worldview.
+
+Context:
+${contextText}`;
+
+    const completion = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+        'Authorization': `Bearer ${openaiKey}`
       },
       body: JSON.stringify({
         model: 'gpt-4',
@@ -36,17 +46,32 @@ Only speak from Scarlet Point's worldview. If a question is outside your framewo
       })
     });
 
-    const data = await response.json();
-
+    const data = await completion.json();
     return {
       statusCode: 200,
       body: JSON.stringify({ reply: data.choices?.[0]?.message?.content || 'No response.' })
     };
-
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Something went wrong.', details: err.message })
+      body: JSON.stringify({ error: err.message || 'Unknown error.' })
     };
   }
 };
+
+async function getEmbedding(text) {
+  const response = await fetch('https://api.openai.com/v1/embeddings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${openaiKey}`
+    },
+    body: JSON.stringify({
+      model: 'text-embedding-3-small',
+      input: text,
+      encoding_format: 'float'
+    })
+  });
+  const result = await response.json();
+  return result.data[0].embedding;
+}
