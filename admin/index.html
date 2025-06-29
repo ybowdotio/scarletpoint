@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScarletPoint Admin Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    // Simple password gate (replace 'yourpassword' with your actual password)
+    const correctPassword = 'quantA@1987a';
+    const storedAccess = localStorage.getItem('scarletpoint_admin');
+    if (storedAccess !== 'granted') {
+      const input = prompt("Enter admin password:");
+      if (input !== correctPassword) {
+        document.body.innerHTML = '<div class="p-10 text-center text-red-500 text-xl">Access Denied</div>';
+        throw new Error("Unauthorized");
+      } else {
+        localStorage.setItem('scarletpoint_admin', 'granted');
+      }
+    }
+  </script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans p-6">
+  <h1 class="text-2xl font-bold mb-6 text-red-400">ScarletPoint Admin Dashboard</h1>
+
+  <div x-data="adminLogs()" x-init="fetchLogs()">
+    <template x-if="loading">
+      <p class="text-sm text-zinc-400">Loading recent logs...</p>
+    </template>
+
+    <template x-if="!loading && logs.length === 0">
+      <p class="text-sm text-zinc-400">No logs found yet.</p>
+    </template>
+
+    <div class="space-y-6" x-show="!loading">
+      <template x-for="log in logs" :key="log.id">
+        <div class="border border-zinc-700 p-4 rounded-lg bg-zinc-900 space-y-2">
+          <div class="text-sm text-zinc-400">
+            <span class="text-red-300 font-medium">Prompt:</span> <span x-text="log.prompt"></span>
+          </div>
+
+          <div>
+            <label class="text-sm text-green-300 font-medium block mb-1">Reply (editable):</label>
+            <textarea class="w-full text-sm text-zinc-100 bg-zinc-800 border border-zinc-600 p-2 rounded" rows="3" x-model="log.edit"></textarea>
+            <div class="flex items-center justify-between mt-2">
+              <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded">Override + Save</button>
+              <button @click="flagLog(log.id)" class="text-xs text-yellow-400 hover:underline">Flag for Review</button>
+            </div>
+          </div>
+
+          <details class="text-sm text-zinc-400">
+            <summary class="cursor-pointer">View Matched Context</summary>
+            <pre class="whitespace-pre-wrap mt-2" x-text="log.context"></pre>
+          </details>
+
+          <p class="text-xs text-zinc-500 mt-2" x-text="new Date(log.timestamp).toLocaleString()"></p>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <script>
+    function adminLogs() {
+      return {
+        logs: [],
+        loading: true,
+        async fetchLogs() {
+          try {
+            const res = await fetch('/.netlify/functions/fetch-scarlet-logs');
+            const json = await res.json();
+            this.logs = (json.data || []).map(log => ({ ...log, edit: log.reply }));
+          } catch (err) {
+            console.error('Error loading logs:', err);
+          } finally {
+            this.loading = false;
+          }
+        },
+        async submitEdit(log) {
+          const confirmed = confirm("Save this override?");
+          if (!confirmed) return;
+
+          try {
+            const res = await fetch('/.netlify/functions/submit-scarlet-override', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: log.id, override: log.edit })
+            });
+            const result = await res.json();
+            if (result.success) alert("Saved override.");
+            else alert("Save failed: " + result.error);
+          } catch (e) {
+            alert("Error saving override.");
+            console.error(e);
+          }
+        },
+        async flagLog(id) {
+          try {
+            await fetch('/.netlify/functions/flag-scarlet-log', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id })
+            });
+            alert("Flagged for review.");
+          } catch (err) {
+            alert("Error flagging log.");
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
