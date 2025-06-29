@@ -1,0 +1,11 @@
+{
+  "name": "scarletpoint",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.42.5",
+    "node-fetch": "^3.3.2"
+  }
+}
+
+Add package.json with supabase-js and node-fetch dependencies
