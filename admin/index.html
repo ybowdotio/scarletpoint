@@ -7,7 +7,6 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script>
-    // Simple password gate (replace 'yourpassword' with your actual password)
     const correctPassword = 'quantA@1987a';
     const storedAccess = localStorage.getItem('scarletpoint_admin');
     if (storedAccess !== 'granted') {
@@ -43,9 +42,16 @@
           <div>
             <label class="text-sm text-green-300 font-medium block mb-1">Reply (editable):</label>
             <textarea class="w-full text-sm text-zinc-100 bg-zinc-800 border border-zinc-600 p-2 rounded" rows="3" x-model="log.edit"></textarea>
-            <div class="flex items-center justify-between mt-2">
-              <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded">Override + Save</button>
-              <button @click="flagLog(log.id)" class="text-xs text-yellow-400 hover:underline">Flag for Review</button>
+            <div class="flex flex-wrap items-center justify-between mt-2 gap-2">
+              <div class="flex gap-2">
+                <input x-model="log.source" type="text" placeholder="Source (e.g. JBC)" class="text-xs px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-100">
+                <input x-model="log.topic" type="text" placeholder="Tag (e.g. Trinity)" class="text-xs px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-100">
+              </div>
+              <div class="flex gap-2">
+                <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded">Override + Save</button>
+                <button @click="flagLog(log.id)" class="text-xs text-yellow-400 hover:underline">Flag for Review</button>
+                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded">Reinforce to Memory</button>
+              </div>
             </div>
           </div>
 
@@ -69,7 +75,12 @@
           try {
             const res = await fetch('/.netlify/functions/fetch-scarlet-logs');
             const json = await res.json();
-            this.logs = (json.data || []).map(log => ({ ...log, edit: log.reply }));
+            this.logs = (json.data || []).map(log => ({
+              ...log,
+              edit: log.reply,
+              source: log.source || '',
+              topic: log.topic || ''
+            }));
           } catch (err) {
             console.error('Error loading logs:', err);
           } finally {
@@ -84,7 +95,12 @@
             const res = await fetch('/.netlify/functions/submit-scarlet-override', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id: log.id, override: log.edit })
+              body: JSON.stringify({
+                id: log.id,
+                override: log.edit,
+                source: log.source,
+                topic: log.topic
+              })
             });
             const result = await res.json();
             if (result.success) alert("Saved override.");
@@ -104,6 +120,25 @@
             alert("Flagged for review.");
           } catch (err) {
             alert("Error flagging log.");
+          }
+        },
+        async reinforceToMemory(log) {
+          try {
+            const res = await fetch('/.netlify/functions/reinforce-scarlet-memory', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                content: log.edit,
+                source: log.source,
+                topic: log.topic
+              })
+            });
+            const result = await res.json();
+            if (result.success) alert("Reinforced to memory.");
+            else alert("Reinforce failed: " + result.error);
+          } catch (e) {
+            alert("Error reinforcing memory.");
+            console.error(e);
           }
         }
       }
