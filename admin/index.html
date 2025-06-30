@@ -56,7 +56,11 @@
               </div>
               <div class="flex gap-2">
                 <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white">✅ Save</button>
-                <button @click="flagLog(log)" class="text-xs bg-orange-600 hover:bg-orange-700 px-3 py-1 rounded text-white">⚠️ Flag</button>
+                <button @click="flagLog(log)"
+                  class="text-xs px-3 py-1 rounded text-white"
+                  :class="log.flagged ? 'bg-gray-600 hover:bg-gray-700' : 'bg-orange-600 hover:bg-orange-700'"
+                  x-text="log.flagged ? '🚫 Unflag' : '⚠️ Flag'">
+                </button>
                 <button @click="reinforceToMemory(log)" class="text-xs bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">💾 Reinforce</button>
               </div>
             </div>
@@ -125,11 +129,13 @@
           }
         },
         async flagLog(log) {
+          const isCurrentlyFlagged = log.flagged;
+
           try {
             const res = await fetch('/.netlify/functions/flag-scarlet-log', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id: log.id })
+              body: JSON.stringify({ id: log.id, flagged: !isCurrentlyFlagged })
             });
 
             const contentType = res.headers.get('content-type');
@@ -144,10 +150,10 @@
             if (!res.ok) throw new Error(`Server error: ${res.status} - ${result.error || text}`);
 
             if (result.success) {
-              log.flagged = true;
-              alert("Flagged for review.");
+              log.flagged = !isCurrentlyFlagged;
+              alert(log.flagged ? "Flagged for review." : "Unflagged.");
             } else {
-              alert("Flagging failed: " + result.error);
+              alert("Flag toggle failed: " + result.error);
             }
           } catch (err) {
             alert("Error flagging log: " + err.message);
