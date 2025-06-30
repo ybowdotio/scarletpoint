@@ -8,7 +8,9 @@ const supabase = createClient(
 
 exports.handler = async (event) => {
   try {
-    const { id } = JSON.parse(event.body);
+    const { id, flagged } = JSON.parse(event.body || '{}');
+    console.log('🪵 Received payload:', { id, flagged });
+
     if (!id) {
       return {
         statusCode: 400,
@@ -18,7 +20,7 @@ exports.handler = async (event) => {
 
     const { error } = await supabase
       .from('scarlet_logs')
-      .update({ flagged: true })
+      .update({ flagged })
       .eq('id', id);
 
     if (error) {
