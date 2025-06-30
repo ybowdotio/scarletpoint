@@ -55,9 +55,9 @@
                 <input x-model="log.topic" type="text" placeholder="Tag (e.g. Trinity)" class="text-xs px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-100">
               </div>
               <div class="flex gap-2">
-                <button @click="submitEdit(log)" class="text-xs bg-green-500 hover:bg-green-600 px-3 py-1 rounded text-white">✅ Save</button>
-                <button @click="flagLog(log)" class="text-xs bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-black">⚠️ Flag</button>
-                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-white">💾 Reinforce</button>
+                <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white">✅ Save</button>
+                <button @click="flagLog(log)" class="text-xs bg-orange-600 hover:bg-orange-700 px-3 py-1 rounded text-white">⚠️ Flag</button>
+                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">💾 Reinforce</button>
               </div>
             </div>
           </div>
@@ -132,15 +132,17 @@
               body: JSON.stringify({ id: log.id })
             });
 
-            if (!res.ok) {
-              const text = await res.text();
-              throw new Error(`Server error: ${res.status} - ${text}`);
+            const contentType = res.headers.get('content-type');
+            const text = await res.text();
+            let result;
+            try {
+              result = JSON.parse(text);
+            } catch {
+              throw new Error("Non-JSON response from server");
             }
 
-            const contentType = res.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) throw new Error("Non-JSON response from server");
+            if (!res.ok) throw new Error(`Server error: ${res.status} - ${result.error || text}`);
 
-            const result = await res.json();
             if (result.success) {
               log.flagged = true;
               alert("Flagged for review.");
