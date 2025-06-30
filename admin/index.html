@@ -55,9 +55,9 @@
                 <input x-model="log.topic" type="text" placeholder="Tag (e.g. Trinity)" class="text-xs px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-100">
               </div>
               <div class="flex gap-2">
-                <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white">Save ✅</button>
-                <button @click="flagLog(log)" class="text-xs bg-yellow-600 hover:bg-yellow-700 px-3 py-1 rounded text-white">Flag ⚠️</button>
-                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">Reinforce 💾</button>
+                <button @click="submitEdit(log)" class="text-xs bg-green-500 hover:bg-green-600 px-3 py-1 rounded text-white">✅ Save</button>
+                <button @click="flagLog(log)" class="text-xs bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-black">⚠️ Flag</button>
+                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-white">💾 Reinforce</button>
               </div>
             </div>
           </div>
@@ -132,8 +132,12 @@
               body: JSON.stringify({ id: log.id })
             });
 
+            if (!res.ok) {
+              const text = await res.text();
+              throw new Error(`Server error: ${res.status} - ${text}`);
+            }
+
             const contentType = res.headers.get('content-type');
-            if (!res.ok) throw new Error(`Server error: ${res.status}`);
             if (!contentType || !contentType.includes('application/json')) throw new Error("Non-JSON response from server");
 
             const result = await res.json();
