@@ -24,6 +24,13 @@
   <h1 class="text-2xl font-bold mb-6 text-red-400">ScarletPoint Admin Dashboard</h1>
 
   <div x-data="adminLogs()" x-init="fetchLogs()">
+    <div class="mb-4">
+      <label class="inline-flex items-center text-sm">
+        <input type="checkbox" x-model="showFlaggedOnly" class="mr-2">
+        Show only flagged logs
+      </label>
+    </div>
+
     <template x-if="loading">
       <p class="text-sm text-zinc-400">Loading recent logs...</p>
     </template>
@@ -33,8 +40,8 @@
     </template>
 
     <div class="space-y-6" x-show="!loading">
-      <template x-for="log in logs" :key="log.id">
-        <div class="border border-zinc-700 p-4 rounded-lg bg-zinc-900 space-y-2">
+      <template x-for="log in filteredLogs" :key="log.id">
+        <div class="border border-zinc-700 p-4 rounded-lg bg-zinc-900 space-y-2" :class="{ 'opacity-50': log.flagged }">
           <div class="text-sm text-zinc-400">
             <span class="text-red-300 font-medium">Prompt:</span> <span x-text="log.prompt"></span>
           </div>
@@ -48,9 +55,9 @@
                 <input x-model="log.topic" type="text" placeholder="Tag (e.g. Trinity)" class="text-xs px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-100">
               </div>
               <div class="flex gap-2">
-                <button @click="submitEdit(log)" class="text-xs bg-green-600 hover:bg-green-700 px-3 py-1 rounded">Override + Save</button>
-                <button @click="flagLog(log.id)" class="text-xs text-yellow-400 hover:underline">Flag for Review</button>
-                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded">Reinforce to Memory</button>
+                <button @click="submitEdit(log)" class="text-xs bg-green-500 hover:bg-green-600 px-3 py-1 rounded text-white">✅ Save</button>
+                <button @click="flagLog(log)" class="text-xs bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-white">⚠️ Flag</button>
+                <button @click="reinforceToMemory(log)" class="text-xs bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-white">💾 Reinforce</button>
               </div>
             </div>
           </div>
@@ -71,6 +78,10 @@
       return {
         logs: [],
         loading: true,
+        showFlaggedOnly: false,
+        get filteredLogs() {
+          return this.showFlaggedOnly ? this.logs.filter(log => log.flagged) : this.logs;
+        },
         async fetchLogs() {
           try {
             const res = await fetch('/.netlify/functions/fetch-scarlet-logs');
@@ -79,7 +90,8 @@
               ...log,
               edit: log.reply,
               source: log.source || '',
-              topic: log.topic || ''
+              topic: log.topic || '',
+              flagged: log.flagged || false
             }));
           } catch (err) {
             console.error('Error loading logs:', err);
@@ -110,16 +122,23 @@
             console.error(e);
           }
         },
-        async flagLog(id) {
+        async flagLog(log) {
           try {
-            await fetch('/.netlify/functions/flag-scarlet-log', {
+            const res = await fetch('/.netlify/functions/flag-scarlet-log', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id })
+              body: JSON.stringify({ id: log.id })
             });
-            alert("Flagged for review.");
+            const result = await res.json();
+            if (result.success) {
+              log.flagged = true;
+              alert("Flagged for review.");
+            } else {
+              alert("Flagging failed: " + result.error);
+            }
           } catch (err) {
             alert("Error flagging log.");
+            console.error(err);
           }
         },
         async reinforceToMemory(log) {
