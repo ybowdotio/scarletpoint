@@ -6,6 +6,25 @@
   <meta name="description" content="Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and broken symmetry in the Standard Model of physics." />
   <meta name="keywords" content="theology, physics, cosmology, Jailbreaking Christ, broken symmetry, Scarlet Point, Eugene L. Ulrich" />
   <title>Scarlet Point | Jailbreaking Christ</title>
+
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDFC1P40LH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZDFC1P40LH');
+</script>
+
+
+  <!-- Favicon and Web Manifest -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#7c0000">
   
   <!-- Tailwind CSS script in the head to prevent Flash of Unstyled Content -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -66,9 +85,12 @@
 
   <!-- Navigation Bar -->
   <nav class="nav-bg sticky top-0 z-50 text-center py-3">
-    <a href="./index.html" class="text-yellow-400 font-bold mx-3 hover:text-white transition-colors duration-300">Home</a>
-    <a href="./videos.html" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Videos</a>
-    <a href="./blog-index.html" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Blog</a>
+    <a href="#about" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">About</a>
+    <a href="#jbc" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Jailbreaking Christ</a>
+    <a href="#author" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Author</a>
+    <a href="#analysis" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Analysis</a>
+    <a href="#reviews" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Reviews</a>
+    <a href="#contact" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Contact</a>
   </nav>
 
   <!-- Main Content -->
@@ -84,7 +106,7 @@
       <div class="flex flex-col items-center">
         <div class="p-2 bg-gradient-to-br from-red-800 to-red-900 rounded-lg shadow-2xl">
           <img 
-            src="beautiful-way-reality-red.png" 
+            src="https://scarletpoint.com/beautiful-way-reality-red-900.webp" 
             alt="A conceptual image representing the Jailbreaking Christ thesis" 
             class="w-full max-w-md rounded-md"
             onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a0a/e53e3e?text=Image+Not+Found';"
@@ -96,13 +118,15 @@
     <!-- About Section -->
     <section id="about" class="mb-16 scroll-mt-20">
       <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">About Scarlet Point</h2>
-      <p class="text-gray-300 text-lg">Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and the broken symmetry of the Standard Model. It weaves theology and cosmology into a single, coherent narrative—stretching from the birth of the universe to you reading this sentence.</p>
+      <p class="text-gray-300 text-lg">Scarlet Point is a research and storytelling initiative revealing the ontological unity between the broken body of Christ and the broken symmetries in the Standard Model of particle phyiscs.
+It weaves theology and cosmology into a single, coherent narrative—stretching from the birth of the universe to you reading this sentence..</p>
     </section>
 
     <!-- Jailbreaking Christ Introduction -->
     <section id="jbc" class="mb-16 scroll-mt-20">
       <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">The Book: Jailbreaking Christ</h2>
       <p class="text-gray-300 mb-4 text-lg">A radical theological hypothesis: that the Lamb slain from the foundation of the world is not metaphor but mechanism. That Christ's broken body is the structure of spacetime itself. Read excerpts, explore the implications, or download the critical analysis.</p>
+      <a href="#jbc-thesis" class="inline-block mt-2 px-8 py-3 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-800 transition-all duration-300 shadow-lg hover:shadow-xl">Read the Thesis</a>
     </section>
 
     <!-- Book Blurb Section -->
@@ -141,7 +165,7 @@
         <div class="grid md:grid-cols-3 gap-8 items-center">
             <div class="md:col-span-1 flex justify-center">
                 <div class="p-1 bg-gradient-to-br from-red-800 to-red-900 rounded-full shadow-2xl">
-                    <img src="Author-Profile.jpg" 
+                    <img src="Author Profile.webp" 
                          alt="Portrait of Eugene L. Ulrich"
                          class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover"
                          onerror="this.onerror=null;this.src='https://placehold.co/400x400/0a0a0a/e53e3e?text=Author';"
@@ -158,7 +182,19 @@
         </div>
     </section>
 
-    <!-- AI Analysis Section -->
+    <!-- Thesis Details -->
+    <section id="jbc-thesis" class="mb-16 bg-gray-900/50 p-6 rounded-lg shadow-inner scroll-mt-20">
+        <h2 class="text-3xl font-bold text-red-400 mb-4">The Thesis</h2>
+        <div class="prose prose-invert max-w-none text-gray-300 space-y-4 text-lg">
+          <p>The central claim of Jailbreaking Christ is that the universe is the broken body of the Son—not metaphorically, but ontologically and structurally. The same broken symmetry that gives rise to mass, force, and field in the Standard Model is the very essence of Christ’s “broken body” described in Scripture.</p>
+          <p>Christ is not merely a historical figure crucified by men, but the cosmic Lamb—slain from the foundation of the world, not in time, but as time. (Think &mdash; &quot;Alpha &amp; Omega&quot;)
+ The crucifixion is not just an event; it is the unveiling of a deeper reality that already generates and upholds all things through its wound. <em>(Think—“Except ye eat the flesh of the Son of man, and drink his blood, ye have no life in you.”)</em>
+</p>
+          <p>Jailbreaking Christ isn’t abandoning Scripture—it’s finally letting it deliver what it was built to carry.</p>
+          <p>This is an invitation to behold the Lamb through the stereoscopic lens of physics and scripture, and to recognize that creation itself is His body broken — the very structure of sacrifice, not the stage.</p>
+        </div>
+    </section>
+        <!-- AI Analysis Section -->
     <section id="analysis" class="mb-16 scroll-mt-20">
       <h2 class="text-3xl font-bold text-red-400 mb-4 border-b-2 border-red-800 pb-2">Critical Analysis</h2>   
     <!-- Critical Analysis Section -->
@@ -167,7 +203,7 @@
         <h3 class="text-2xl font-bold text-red-300 mb-4">Audio Deep Dive by NotebookLM</h3>
         <p class="text-gray-400 mb-4">Listen to an AI-generated audio analysis exploring the core ideas of the book.</p>
         <audio controls class="w-full">
-          <source src="jbc-cosmic-vision.m4a" type="audio/mp4">
+          <source src="Jailbreaking Christ A Cosmic Vision of Creation and Redemption.m4a" type="audio/mp4">
           Your browser does not support the audio element. Please use a modern browser to listen to the podcast.
         </audio>
       </div>
@@ -176,25 +212,47 @@
       <p class="text-gray-300 mb-6 text-lg">To explore the strengths and challenges of the book's thesis, we submitted it for an independent analysis by the AI model ChatGPT-4. Below are key excerpts from its detailed report.</p>
       <div class="space-y-4">
         <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
-          <summary class="cursor-pointer text-red-400 font-semibold text-lg">On the Central Argument</summary>
-          <div class="mt-4 text-gray-300 space-y-2 prose prose-invert max-w-none">
-            <p>"Ulrich's central argument is ambitious and novel, and he articulates it with passionate clarity... He succeeds in clearly communicating his central idea in multiple ways (narrative, scriptural exegesis, scientific explanation), which reinforces coherence."</p>
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">1. Clarity and Coherence</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>The analysis finds Ulrich's core claim—that the "broken" cosmos mirrors Christ's broken body—to be articulated with passionate clarity. The argument weaves personal narrative, scripture, and science into a generally accessible and coherent, if ambitious, thesis.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“Readers who accept his premises will find the thesis imaginative and coherent, whereas skeptics might view it as an extended metaphor pushed to its limits.”</blockquote>
           </div>
         </details>
         <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
-          <summary class="cursor-pointer text-red-400 font-semibold text-lg">On the Scientific Basis</summary>
-          <div class="mt-4 text-gray-300 space-y-2 prose prose-invert max-w-none">
-            <p>"Ulrich's scientific explanations are accurate in outline and richly illustrated... He relies on mainstream scientific findings... and generally does not misrepresent them; instead, he reinterprets their meaning."</p>
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">2. Scientific Basis and Accuracy</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>Ulrich grounds his thesis in key concepts from modern physics, like broken symmetry and the Standard Model. The analysis concludes that he generally describes these ideas accurately for a lay audience, using them as a foundation for his theological interpretation.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“Physicists would agree with most of Ulrich's scientific descriptions (Big Bang, symmetry breaking, Higgs, etc.), but they would not endorse the theological conclusions drawn from them.”</blockquote>
           </div>
         </details>
         <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
-          <summary class="cursor-pointer text-red-400 font-semibold text-lg">On the Theological Foundations</summary>
-          <div class="mt-4 text-gray-300 space-y-2 prose prose-invert max-w-none">
-            <p>"Perhaps the most beautiful and novel aspect of Ulrich's theology is his reimagining of atonement... The strengths of this approach are its emphasis on God's constant grace and presence and its unification of natural and spiritual life."</p>
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">3. Theological & Exegetical Foundations</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>The project is as much theological as it is scientific, centering on a highly cosmological Christology and a reimagining of atonement as an ongoing, cosmic reality. The analysis notes this is both innovative and a departure from some orthodox positions.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“Ulrich's Christology is bold but heterodox in places... He effectively transposes the Eucharist to a cosmic key: just as Christians believe they partake in Christ's broken body... Ulrich sees all creatures as literally partaking in Christ's broken cosmic body...”</blockquote>
           </div>
         </details>
-      </div>
-       <div class="text-center mt-8">
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">4. Critiques and External Responses</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>The analysis explores potential critiques, noting that scientists might view the theological claims as an unfalsifiable interpretive layer, while theologians might challenge the departure from key orthodox doctrines and the allegorical use of scripture.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“Theologians would caution that Ulrich challenges orthodoxy on key points... Scientists would caution that Ulrich's theological overlay is not derived from scientific method and could mislead if taken as science.”</blockquote>
+          </div>
+        </details>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">5. Integration and Coherence</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>The book's most striking aspect is its earnest attempt to integrate science and theology into a single framework. The analysis finds it to be a highly original, largely coherent, and imaginative synthesis that models a fearless engagement with both fields.</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“As an interdisciplinary work... Jailbreaking Christ seems effective in communicating complex ideas in story and metaphor... it sparks wonder, invites further exploration, and models a fearless engagement with both Scripture and science.”</blockquote>
+          </div>
+        </details>
+        <details class="bg-gray-800/70 rounded-lg p-4 transition-all duration-300">
+          <summary class="cursor-pointer text-red-400 font-semibold text-lg">6. Atonement as Dynamic Reality</summary>
+          <div class="mt-4 text-gray-300 space-y-2">
+            <p>One of the most profound and beautiful aspects of Jailbreaking Christ is its rethinking of atonement—not as a past-tense legal transaction, but as a dynamic, ontological reality. Ulrich presents the broken body of Christ as the sustaining center of the cosmos: not only giving substance to creation, but also infusing every moment with the miracle of free will, the possibility of repentance, and the ongoing offer of redemption. Atonement, in this view, is not an event locked in time, rather a beautiful feature embedded in the very structure that holds time together. It is the ever-flowing act of divine self-giving through which reality — and moral agency — exists at all..</p>
+            <blockquote class="border-l-4 border-red-600 pl-4 mt-2 italic text-red-200/90">“Rather, Christ is the cosmic vine from which we the branches are drawing not only our physical life but the full wealth of redemption and salvation. This ever-present nourishing stream of his atoning and life-giving blood is a universal river flowing through the very fabric of the Cosmos.”</blockquote>
+          </div>
+      <div class="text-center mt-8">
             <a href="JBC_Analysis_WCS.pdf" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 px-8 py-3 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-800 transition-all duration-300 shadow-lg hover:shadow-xl">
               Download Full Analysis (PDF) &rarr;
             </a>
@@ -251,7 +309,7 @@
             <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
           </div>
           <strong class="not-italic text-red-300 block mb-2">Expanding my mind toward worship!</strong>
-          <p>"Couldn't put this book down! An exploratory pursuit of the mind of God blending theology and astronomy, this easy-to-grasp voyage from time past into the future will challenge your current thinking and possibly lead you to worship even more. Eugene may also have something in common with Galileo who was persecuted by guardians of 'church orthodoxy' while silencing God’s amazing story, only to later be exposed with geocentric egg dripping from their faces! (That was an elementary attempt at copying Eugene's humor sprinkled so well throughout his book)."</p>
+          <p>"Couldn't put this book down! An exploratory pursuit of the mind of God blending theology and astronomy, this easy-to-grasp voyage from time past into the future will challenge your current thinking and possibly lead you to worship even more. Eugene may also have something in common with Galileo who was persecuted by guardians of "church orthodoxy" while silencing God’s amazing story, only to later be exposed with geocentric egg dripping from their faces! (That was an elementary attempt at copying Eugene's humor sprinkled so well throughout his book).</p>
           <footer class="text-sm text-red-300 mt-2 not-italic">— Luke Kuepfer (April 24, 2024)</footer>
         </blockquote>
         <blockquote class="border-l-4 border-red-600 pl-6 italic bg-gray-900/40 p-4 rounded-r-lg">
@@ -325,22 +383,22 @@
   
   <script>
     // --- Smooth scrolling for navigation links ---
-    document.querySelectorAll('nav a[href^="./"]').forEach(anchor => {
+    // This provides a fallback and finer control for smooth scrolling.
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href').startsWith('./#')) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId.substring(1));
-                if(targetElement) {
-                   targetElement.scrollIntoView({
-                       behavior: 'smooth'
-                   });
-                }
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+               targetElement.scrollIntoView({
+                   behavior: 'smooth'
+               });
             }
         });
     });
 
     // --- AJAX Contact Form Submission ---
+    // This script handles the form submission without redirecting the user.
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
@@ -366,6 +424,7 @@
                 formStatus.className = 'mt-4 text-center font-semibold text-green-400';
                 form.reset();
             } else {
+                // This handles server-side errors from Formspree.
                 const responseData = await response.json();
                 if (Object.hasOwn(responseData, 'errors')) {
                     formStatus.textContent = responseData["errors"].map(error => error["message"]).join(", ");
@@ -375,6 +434,7 @@
                 formStatus.className = 'mt-4 text-center font-semibold text-red-400';
             }
         } catch (error) {
+            // This handles network errors.
             formStatus.textContent = "Oops! There was a problem submitting your form. Please check your network connection.";
             formStatus.className = 'mt-4 text-center font-semibold text-red-400';
         }
@@ -385,71 +445,71 @@
     }
   </script>
 
-<!-- Floating Chat Widget -->
-<div x-data="chatbot"  class="fixed bottom-4 right-4 z-50 font-[Inter] text-base transition-all duration-300 ease-in-out">
-  <!-- Floating Button -->
-  <button @click="open = !open" class="bg-[#8B0000] text-white px-4 py-2 rounded-full shadow-lg hover:opacity-90">
-    Ask Scarletpoint
-  </button>
-
-  <!-- Chat Box -->
-  <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="mt-4 w-80 h-[500px] flex flex-col bg-zinc-900 border border-red-800 rounded-xl shadow-2xl overflow-hidden">
-    <!-- Messages -->
-    <div class="flex-1 p-4 overflow-y-auto space-y-3 text-zinc-100 text-base" x-ref="messages">
-      <div><em class="text-red-400">Scarletpoint:</em> I’m an AI trained on the full writings and vision of Scarlet Point. Ask me anything, and I’ll do my best to respond from what I know.</div>
-      <template x-for="msg in messages" :key="msg.id">
-        <div><strong x-text="msg.role === 'user' ? 'You:' : 'Scarletpoint:'"></strong> <span x-text="msg.text"></span></div>
-      </template>
-    </div>
-
-    <!-- Input -->
-    <div class="border-t border-zinc-700 bg-zinc-800 flex">
-      <input x-model="input" @keydown.enter="send()" type="text" placeholder="Ask anything..."
-        class="flex-1 bg-transparent px-4 py-2 text-white placeholder-zinc-400 focus:outline-none">
-      <button :disabled="!input.trim()" @click="send()" class="bg-[#8B0000] text-white px-4 disabled:opacity-40">Send</button>
-    </div>
-  </div>
-</div>
-
-<script src="https://unpkg.com/alpinejs" defer></script>
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('chatbot', () => ({
-      open: false,
-      messages: [],
-      input: '',
-      async send() {
-        const userInput = this.input.trim();
-        if (!userInput) return;
-
-        this.messages.push({ role: 'user', text: userInput, id: Date.now() });
-        this.input = '';
-        this.$nextTick(() => {
-          const container = this.$refs.messages;
-          container.scrollTop = container.scrollHeight;
-        });
-
-        try {
-          const res = await fetch('/.netlify/functions/ask-scarletpoint', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: userInput })
-          });
-
-          const data = await res.json();
-          const reply = data.reply || 'No response.';
-          this.messages.push({ role: 'assistant', text: reply, id: Date.now() + 1 });
-          this.$nextTick(() => {
-            const container = this.$refs.messages;
-            container.scrollTop = container.scrollHeight;
-          });
-        } catch (error) {
-          this.messages.push({ role: 'assistant', text: 'Sorry, something went wrong.', id: Date.now() + 1 });
-        }
-      }
-    }))
-  });
-</script>
+<!-- <!-- Tailwind-based Scarlet Point Floating Chat Widget (Updated Fonts & Size) --> -->
+<!-- <div x-data="chatbot"  class="fixed bottom-4 right-4 z-50 font-[Inter] text-base transition-all duration-300 ease-in-out"> -->
+<!--   <!-- Floating Button --> -->
+<!--   <button @click="open = !open" class="bg-[#8B0000] text-white px-4 py-2 rounded-full shadow-lg hover:opacity-90"> -->
+<!--     Ask Scarletpoint -->
+<!--   </button> -->
+<!--  -->
+<!--   <!-- Chat Box --> -->
+<!--   <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2" class="mt-4 w-80 h-[500px] flex flex-col bg-zinc-900 border border-red-800 rounded-xl shadow-2xl overflow-hidden"> -->
+<!--     <!-- Messages --> -->
+<!--     <div class="flex-1 p-4 overflow-y-auto space-y-3 text-zinc-100 text-base" x-ref="messages"> -->
+<!--       <div><em class="text-red-400">Scarletpoint:</em> I’m an AI trained on the full writings and vision of Scarlet Point. Ask me anything, and I’ll do my best to respond from what I know.</div> -->
+<!--       <template x-for="msg in messages" :key="msg.id"> -->
+<!--         <div><strong x-text="msg.role === 'user' ? 'You:' : 'Scarletpoint:'"></strong> <span x-text="msg.text"></span></div> -->
+<!--       </template> -->
+<!--     </div> -->
+<!--  -->
+<!--     <!-- Input --> -->
+<!--     <div class="border-t border-zinc-700 bg-zinc-800 flex"> -->
+<!--       <input x-model="input" @keydown.enter="send()" type="text" placeholder="Ask anything..." -->
+<!--         class="flex-1 bg-transparent px-4 py-2 text-white placeholder-zinc-400 focus:outline-none"> -->
+<!--       <button :disabled="!input.trim()" @click="send()" class="bg-[#8B0000] text-white px-4 disabled:opacity-40">Send</button> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!--  -->
+<!-- <script src="https://unpkg.com/alpinejs" defer></script> -->
+<!-- <script> -->
+<!--   document.addEventListener('alpine:init', () => { -->
+<!--     Alpine.data('chatbot', () => ({ -->
+<!--       open: false, -->
+<!--       messages: [], -->
+<!--       input: '', -->
+<!--       async send() { -->
+<!--         const userInput = this.input.trim(); -->
+<!--         if (!userInput) return; -->
+<!--  -->
+<!--         this.messages.push({ role: 'user', text: userInput, id: Date.now() }); -->
+<!--         this.input = ''; -->
+<!--         this.$nextTick(() => { -->
+<!--           const container = this.$refs.messages; -->
+<!--           container.scrollTop = container.scrollHeight; -->
+<!--         }); -->
+<!--  -->
+<!--         try { -->
+<!--           const res = await fetch('/.netlify/functions/ask-scarletpoint', { -->
+<!--             method: 'POST', -->
+<!--             headers: { 'Content-Type': 'application/json' }, -->
+<!--             body: JSON.stringify({ prompt: userInput }) -->
+<!--           }); -->
+<!--  -->
+<!--           const data = await res.json(); -->
+<!--           const reply = data.reply || 'No response.'; -->
+<!--           this.messages.push({ role: 'assistant', text: reply, id: Date.now() + 1 }); -->
+<!--           this.$nextTick(() => { -->
+<!--             const container = this.$refs.messages; -->
+<!--             container.scrollTop = container.scrollHeight; -->
+<!--           }); -->
+<!--         } catch (error) { -->
+<!--           this.messages.push({ role: 'assistant', text: 'Sorry, something went wrong.', id: Date.now() + 1 }); -->
+<!--         } -->
+<!--       } -->
+<!--     })) -->
+<!--   }); -->
+<!-- </script> -->
 
           
 </body>
