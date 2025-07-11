@@ -102,19 +102,18 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <script>
-    // --- Supabase Client Setup ---
-    const SUPABASE_URL = 'https://mopzucjxlkjjonpbvhft.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vcHp1Y2p4bGtqam9ucGJ2aGZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyNDUxODksImV4cCI6MjA2NzgyMTE4OX0.kwVs7L6rv8El9e-VKA0O_s6ko072T7AlzxFTOWPiLXk';
-    // The global 'supabase' object is provided by the script above.
-    // We create our own client instance here to interact with the database.
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    // --- Fetch and Render Blog Post ---
     document.addEventListener('DOMContentLoaded', async () => {
+      // --- Supabase Client Setup ---
+      // This now runs after the DOM is ready, ensuring the supabase object is available.
+      const SUPABASE_URL = 'https://mopzucjxlkjjonpbvhft.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vcHp1Y2p4bGtqam9ucGJ2aGZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyNDUxODksImV4cCI6MjA2NzgyMTE4OX0.kwVs7L6rv8El9e-VKA0O_s6ko072T7AlzxFTOWPiLXk';
+      const { createClient } = supabase;
+      const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      // --- Fetch and Render Blog Post ---
       const postContainer = document.getElementById('blog-post');
       const loadingState = document.getElementById('loading-state');
       
-      // Get the blog post 'slug' from the URL query parameter
       const params = new URLSearchParams(window.location.search);
       const slug = params.get('slug');
 
@@ -124,29 +123,25 @@
       }
 
       try {
-        // Fetch the specific blog post from the 'blog_posts' table
         const { data, error } = await supabaseClient
           .from('blog_posts')
           .select('*')
           .eq('slug', slug)
-          .single(); // .single() expects only one result
+          .single();
 
         if (error) {
           throw error;
         }
 
         if (data) {
-          // Convert the creation date to a readable format
           const postDate = new Date(data.created_at).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
           });
 
-          // Convert Markdown content to HTML
           const contentHtml = marked.parse(data.content || '');
 
-          // Populate the article with the fetched data
           postContainer.innerHTML = `
             <h1 class="text-4xl md:text-5xl font-extrabold text-red-300 mb-2 leading-tight">${data.title}</h1>
             <p class="text-gray-400 mb-8 text-lg">Posted by ${data.author || 'Eugene L. Ulrich'} on ${postDate}</p>
@@ -155,7 +150,6 @@
             </div>
           `;
         } else {
-          // Handle case where no post with that slug is found
           postContainer.innerHTML = `<h1 class="text-4xl font-bold text-red-400">Post Not Found</h1><p class="mt-4 text-lg">Sorry, we couldn't find a blog post with that slug.</p>`;
         }
       } catch (error) {
