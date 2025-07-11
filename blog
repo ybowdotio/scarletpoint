@@ -104,11 +104,11 @@
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       // --- Supabase Client Setup ---
-      // This now runs after the DOM is ready, ensuring the supabase object is available.
       const SUPABASE_URL = 'https://mopzucjxlkjjonpbvhft.supabase.co';
       const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vcHp1Y2p4bGtqam9ucGJ2aGZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyNDUxODksImV4cCI6MjA2NzgyMTE4OX0.kwVs7L6rv8El9e-VKA0O_s6ko072T7AlzxFTOWPiLXk';
-      const { createClient } = supabase;
-      const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      
+      // Correctly initialize the Supabase client
+      const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
       // --- Fetch and Render Blog Post ---
       const postContainer = document.getElementById('blog-post');
@@ -140,6 +140,7 @@
             day: 'numeric'
           });
 
+          // Use the 'marked' library to parse Markdown content
           const contentHtml = marked.parse(data.content || '');
 
           postContainer.innerHTML = `
