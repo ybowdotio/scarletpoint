@@ -1,6 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog posts and reflections from Scarlet Point, exploring the deep connections between theology, cosmology, and Christ." />
+  <meta name="keywords" content="theology, physics, cosmology, blog, articles, commentary, Scarlet Point" />
+  <title>Blog | Scarlet Point</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+    }
+    .header-gradient {
+      background: linear-gradient(to bottom, #6b0000, #4a0000);
+    }
+    .footer-gradient {
+       background: linear-gradient(to top, #6b0000, #4a0000);
+    }
+    .nav-bg {
+      background-color: rgba(128, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    /* Custom styles for blog readability */
+    .blog-content {
+        font-family: 'Lora', serif;
+        line-height: 1.8;
+        font-size: 1.125rem; /* 18px */
+    }
+    .blog-content h1, .blog-content h2, .blog-content h3 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        color: #fca5a5; /* red-300 */
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #450a0a; /* red-900 */
+        padding-bottom: 0.5rem;
+    }
+     .blog-content h1 { font-size: 2.25rem; }
+     .blog-content h2 { font-size: 1.875rem; }
+     .blog-content h3 { font-size: 1.5rem; }
+
+    .blog-content a {
+        color: #f87171; /* red-400 */
+        text-decoration: underline;
+        transition: color 0.3s;
+    }
+    .blog-content a:hover {
+        color: #fca5a5; /* red-300 */
+    }
+    .blog-content blockquote {
+        border-left-color: #dc2626; /* red-600 */
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-black text-gray-300 font-sans">
+  <!-- Header Section -->
+  <header class="header-gradient p-6 text-center shadow-lg">
+    <h1 class="text-5xl font-extrabold text-red-300 tracking-wider">Scarlet Point</h1>
+    <p class="text-xl text-gray-300 mt-2">Blog & Reflections</p>
+  </header>
+
 <!-- Navigation Bar -->
 <nav class="nav-bg sticky top-0 z-50 text-center py-3">
   <a href="./index.html" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Home</a>
   <a href="./videos.html" class="text-gray-200 mx-3 hover:text-white transition-colors duration-300">Videos</a>
   <a href="./blog-index.html" class="text-yellow-400 font-bold mx-3 hover:text-white transition-colors duration-300">Blog</a>
 </nav>
+
+  <!-- Main Content -->
+  <main class="p-4 md:p-8 max-w-4xl mx-auto">
+
+    <!-- Blog Post Section -->
+    <article id="blog-post" class="bg-gray-900/50 p-4 md:p-8 rounded-lg shadow-2xl">
+      <!-- Content will be loaded here dynamically -->
+      <div id="loading-state" class="text-center text-gray-400">
+        <p class="text-2xl">Loading post...</p>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-gradient text-center p-6 text-gray-400 mt-12">
+    <p>&copy; 2025 Scarlet Point. All rights reserved.</p>
+    <a href="./index.html" class="text-gray-400 hover:text-white">Return to Home</a>
+  </footer>
+  
+  <!-- Supabase and Markdown Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // --- Supabase Client Setup ---
+      const SUPABASE_URL = 'https://mopzucjxlkjjonpbvhft.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vcHp1Y2p4bGtqam9ucGJ2aGZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyNDUxODksImV4cCI6MjA2NzgyMTE4OX0.kwVs7L6rv8El9e-VKA0O_s6ko072T7AlzxFTOWPiLXk';
+      
+      // Correctly initialize the Supabase client
+      const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      // --- Fetch and Render Blog Post ---
+      const postContainer = document.getElementById('blog-post');
+      const loadingState = document.getElementById('loading-state');
+      
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+
+      if (!slug) {
+        postContainer.innerHTML = `<h1 class="text-4xl font-bold text-red-400">No blog post specified.</h1><p class="mt-4 text-lg">Please provide a post slug in the URL, like "?slug=your-post-slug".</p>`;
+        return;
+      }
+
+      try {
+        const { data, error } = await supabaseClient
+          .from('blog_posts')
+          .select('*')
+          .eq('slug', slug)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          const postDate = new Date(data.created_at).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+
+          // Use the 'marked' library to parse Markdown content
+          const contentHtml = marked.parse(data.content || '');
+
+          postContainer.innerHTML = `
+            <h1 class="text-4xl md:text-5xl font-extrabold text-red-300 mb-2 leading-tight">${data.title}</h1>
+            <p class="text-gray-400 mb-8 text-lg">Posted by ${data.author || 'Eugene L. Ulrich'} on ${postDate}</p>
+            <div class="blog-content space-y-6">
+              ${contentHtml}
+            </div>
+          `;
+        } else {
+          postContainer.innerHTML = `<h1 class="text-4xl font-bold text-red-400">Post Not Found</h1><p class="mt-4 text-lg">Sorry, we couldn't find a blog post with that slug.</p>`;
+        }
+      } catch (error) {
+        console.error('Error fetching blog post:', error);
+        postContainer.innerHTML = `<h1 class="text-4xl font-bold text-red-400">Error</h1><p class="mt-4 text-lg">There was an error loading the post. Please try again later.</p>`;
+      }
+    });
+  </script>
+
+</body>
+</html>
